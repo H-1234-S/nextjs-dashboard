@@ -23,7 +23,7 @@ const links = [
 ];
 
 export default function NavLinks() {
-  // 获取当前url路径 例如：/dashboard/invoices
+  // usePathname获取当前url路径 例如：/dashboard/invoices
   const pathname = usePathname();
   useEffect(() => (console.log(pathname)), [pathname])
   return (
