@@ -1,6 +1,6 @@
 const page = () => {
   return (
-    <p>Customers Page</p>
+    <p>客户页面</p>
   )
 }
 

@@ -3,11 +3,15 @@ import { authConfig } from './auth.config';
 import Credentials from 'next-auth/providers/credentials';
 import { z } from 'zod';
 import type { User } from '@/app/lib/definitions';
+// 导入 bcrypt 加密库。
 import bcrypt from 'bcrypt';
+// 导入PostgreSQL驱动，与PostgreSQL数据库通信
 import postgres from 'postgres';
 
+// 创建sql查询函数
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
+// 创建查询函数
 async function getUser(email: string): Promise<User | undefined> {
   try {
     const user = await sql<User[]>`SELECT * FROM users WHERE email=${email}`;
@@ -18,6 +22,7 @@ async function getUser(email: string): Promise<User | undefined> {
   }
 }
 
+// 配置NextAuth函数
 export const { auth, signIn, signOut } = NextAuth({
   ...authConfig,
   providers: [

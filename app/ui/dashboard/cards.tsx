@@ -22,11 +22,11 @@ export default async function CardWrapper() {
   } = await fetchCardData();
   return (
     <>
-      <Card title="Collected" value={totalPaidInvoices} type="collected" />
-      <Card title="Pending" value={totalPendingInvoices} type="pending" />
-      <Card title="Total Invoices" value={numberOfInvoices} type="invoices" />
+      <Card title="已收款" value={totalPaidInvoices} type="collected" />
+      <Card title="待处理" value={totalPendingInvoices} type="pending" />
+      <Card title="发票总数" value={numberOfInvoices} type="invoices" />
       <Card
-        title="Total Customers"
+        title="客户总数"
         value={numberOfCustomers}
         type="customers"
       />

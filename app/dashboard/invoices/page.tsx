@@ -22,17 +22,21 @@ export default async function Page(props: {
   return (
     <div className="w-full">
       <div className="flex w-full items-center justify-between">
-        <h1 className={`${lusitana.className} text-2xl`}>Invoices</h1>
+        <h1 className={`${lusitana.className} text-2xl`}>发票</h1>
       </div>
       <div className="mt-3 flex items-center justify-between gap-2 md:mt-8">
-        <Search placeholder="Search invoices..." />
+        <Search placeholder="搜索发票..." />
         <CreateInvoice />
       </div>
-       <Suspense key={query + currentPage} fallback={<InvoicesTableSkeleton />}>
-        <Table query={query} currentPage={currentPage} />
-      </Suspense>
+      <div className="min-h-[400px]">
+        <Suspense key={query + currentPage} fallback={<InvoicesTableSkeleton />}>
+          <Table query={query} currentPage={currentPage} />
+        </Suspense>
+      </div>
       <div className="mt-4 flex w-full justify-center">
-        <Pagination totalPages={totalPages} />
+        <div className="min-h-[50px] w-full flex justify-center">
+          <Pagination totalPages={totalPages} />
+        </div>
       </div>
     </div>
   );
